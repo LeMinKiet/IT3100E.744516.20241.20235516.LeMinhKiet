@@ -5,3 +5,5 @@ After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two
 After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed? 
 -Changes to the object's internal state will be reflected outside the method.
 
+Write a toString() method for the DigitalVideoDisc class. What should be the return type of this method?
+-String
