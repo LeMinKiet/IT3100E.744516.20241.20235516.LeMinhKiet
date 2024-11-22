@@ -8,7 +8,7 @@ public class Cart {
     public static final int MAX_NUMBER_ORDERED = 20;
     private DigitalVideoDisc items_order[] = new DigitalVideoDisc[MAX_NUMBER_ORDERED];
     private int undercurrent =0; // this is qrtOrdered
-    public void add_DigitalVideoDisc(DigitalVideoDisc disc) {
+    public void addDigitalVideoDisc(DigitalVideoDisc disc) {
         if (undercurrent ==MAX_NUMBER_ORDERED) {
             System.out.println("Cart has been fulled");
         }
@@ -21,7 +21,7 @@ public class Cart {
             }
         }
     }
-    public void remove_DigitalVideoDisc(DigitalVideoDisc disc) {
+    public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         boolean Turn_on= false;
         int update= undercurrent;
         if (undercurrent ==0) {
@@ -55,16 +55,16 @@ public class Cart {
         }
         return result;
     }
-    public void add_DigitalVideoDisc(DigitalVideoDisc[] dvdList){
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
         for (DigitalVideoDisc t : dvdList){
-            add_DigitalVideoDisc(t);
+            addDigitalVideoDisc(t);
         }
     }
-    public void add_DigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
-        add_DigitalVideoDisc(dvd1);
-        add_DigitalVideoDisc(dvd2);
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
+        addDigitalVideoDisc(dvd1);
+        addDigitalVideoDisc(dvd2);
     }
-    public void display_Information(DigitalVideoDisc[] dvdList){
+    public void displayInformation(DigitalVideoDisc[] dvdList){
         int max =0;
         float totalcost=0;
         for (int count =0; count < dvdList.length; count++){

@@ -9,21 +9,21 @@ public class CartTest {
         DigitalVideoDisc[] order = new DigitalVideoDisc[3];
 
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Alters", 87, 19.95f);
-        cart.add_DigitalVideoDisc(dvd1);
+        cart.addDigitalVideoDisc(dvd1);
         order[0]=dvd1;
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-        cart.add_DigitalVideoDisc(dvd2);
+        cart.addDigitalVideoDisc(dvd2);
         order[1]=dvd2;
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladdin", "Animation", 18.99f);
-        cart.add_DigitalVideoDisc(dvd3);
+        cart.addDigitalVideoDisc(dvd3);
         order[2]=dvd3;
         System.out.println("The Cost is: ");
         System.out.println(cart.totalCost());
-        cart.remove_DigitalVideoDisc(dvd3);
+        cart.removeDigitalVideoDisc(dvd3);
 
         System.out.println("The remain cost is: ");
         System.out.println(cart.totalCost());
-        cart.display_Information(order);
+        cart.displayInformation(order);
         cart.searchDisc(2);
         cart.searchDisc("Aladdin");
 
