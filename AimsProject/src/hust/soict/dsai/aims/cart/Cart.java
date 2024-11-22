@@ -2,6 +2,8 @@ package hust.soict.dsai.aims.cart;
 
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
+import java.util.Arrays;
+
 public class Cart {
     public static final int MAX_NUMBER_ORDERED = 20;
     private DigitalVideoDisc items_order[] = new DigitalVideoDisc[MAX_NUMBER_ORDERED];
@@ -62,4 +64,30 @@ public class Cart {
         add_DigitalVideoDisc(dvd1);
         add_DigitalVideoDisc(dvd2);
     }
+    public void display_Information(DigitalVideoDisc[] dvdList){
+        int max =0;
+        float totalcost=0;
+        for (int count =0; count < dvdList.length; count++){
+            if(dvdList[count].toString().length()>max){
+                max=dvdList[count].toString().length();
+            }
+        }
+        String[] begin = new String[max+2];
+        Arrays.fill(begin,"*");
+        int start=(max-2)/2;
+        begin[start]="C";
+        begin[start+1]="A";
+        begin[start+2]="R";
+        begin[start+3]="T";
+        System.out.println(String.join("",begin));
+        System.out.println("Ordered Items:");
+        for (int count =0; count < dvdList.length; count++){
+            totalcost+=dvdList[count].getCost();
+            System.out.println((count+1)+"."+dvdList[count].toString());
+        }
+        System.out.println("Total cost: "+totalcost+"$");
+        Arrays.fill(begin,"*");
+        System.out.println(String.join("",begin));
+    }
+
 }
