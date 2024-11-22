@@ -26,6 +26,7 @@ public class DigitalVideoDisc {
     public float getCost() {
         return cost;
     }
+    public int getId(){return id;}
     public DigitalVideoDisc(String title) {
         super();
         this.title = title;
@@ -62,7 +63,9 @@ public class DigitalVideoDisc {
     public String toString(){
         return "DVD - "+this.title+" - "+this.category+" - "+this.director+" - "+this.length+" - "+this.cost+ "$";
     }
-
+    public boolean isMatch(String name){
+        return name.equals(this.title);
+    }
 
 }
 
