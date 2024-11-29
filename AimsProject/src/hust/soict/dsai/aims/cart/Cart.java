@@ -12,8 +12,9 @@ public class Cart {
     private ArrayList<Media> itemsOrdered= new ArrayList<>();
     public void addMedia(Media media){
         if (itemsOrdered.size()<MAX_NUMBER_ORDERED){
-            if (itemsOrdered.contains(media)) {
+            if (!itemsOrdered.contains(media)) {
                 itemsOrdered.add(media);
+                System.out.println("Add successfully!");
             }
             else System.out.println("Already exist!");
         }
@@ -29,12 +30,12 @@ public class Cart {
         }
         return result;
     }
-    public void displayInformation(DigitalVideoDisc[] dvdList){
+    public void displayInformation(){
         int max =0;
         float totalcost=0;
-        for (int count =0; count < dvdList.length; count++){
-            if(dvdList[count].toString().length()>max){
-                max=dvdList[count].toString().length();
+        for (Media media: itemsOrdered){
+            if(media.toString().length()>max){
+                max=media.toString().length();
             }
         }
         String[] begin = new String[max+2];
@@ -46,13 +47,21 @@ public class Cart {
         begin[start+3]="T";
         System.out.println(String.join("",begin));
         System.out.println("Ordered Items:");
-        for (int count =0; count < dvdList.length; count++){
-            totalcost+=dvdList[count].cost;
-            System.out.println((count+1)+"."+dvdList[count].toString());
+        int count=0;
+        for (Media media: itemsOrdered){
+            totalcost+=media.cost;
+            System.out.println((count+1)+"."+media.toString());
+            count++;
         }
         System.out.println("Total cost: "+totalcost+"$");
         Arrays.fill(begin,"*");
         System.out.println(String.join("",begin));
+    }
+    public void clearCart(){
+        itemsOrdered.clear();
+    }
+    public ArrayList<Media> Items(){
+        return itemsOrdered;
     }
     public void searchDisc(int id){
         System.out.println("------Searching------");
@@ -71,7 +80,7 @@ public class Cart {
         System.out.println("------Searching------");
         boolean not_found = true;
         for (Media dvd : itemsOrdered){
-            if (dvd!= null && dvd.isMatch(title)){
+            if (dvd!= null && dvd.title.equals(title)){
                 System.out.println(dvd.toString());
                 not_found=false;
             }

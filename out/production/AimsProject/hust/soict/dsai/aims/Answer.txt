@@ -1,9 +1,0 @@
-Java is a programing language that is passing by value
-
-After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain? 
-- Object References: When passing objects to methods, Java copies the reference (not the object itself). This means that the reference points to the same object. However, the reference itself is still passed by value, meaning if you change the reference to point to a new object within the method, the original reference outside the method is not affected.
-After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed? 
--Changes to the object's internal state will be reflected outside the method.
-
-Write a toString() method for the DigitalVideoDisc class. What should be the return type of this method?
--String
