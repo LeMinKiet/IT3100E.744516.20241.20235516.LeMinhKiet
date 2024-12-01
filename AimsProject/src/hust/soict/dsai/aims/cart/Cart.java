@@ -1,7 +1,4 @@
 package hust.soict.dsai.aims.cart;
-
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
-import hust.soict.dsai.aims.media.Disc;
 import hust.soict.dsai.aims.media.Media;
 
 import java.util.ArrayList;
@@ -38,24 +35,29 @@ public class Cart {
                 max=media.toString().length();
             }
         }
-        String[] begin = new String[max+2];
-        Arrays.fill(begin,"*");
-        int start=(max-2)/2;
-        begin[start]="C";
-        begin[start+1]="A";
-        begin[start+2]="R";
-        begin[start+3]="T";
-        System.out.println(String.join("",begin));
-        System.out.println("Ordered Items:");
-        int count=0;
-        for (Media media: itemsOrdered){
-            totalcost+=media.cost;
-            System.out.println((count+1)+"."+media.toString());
-            count++;
+        if (max==0){
+            System.out.println("Empty!");
         }
-        System.out.println("Total cost: "+totalcost+"$");
-        Arrays.fill(begin,"*");
-        System.out.println(String.join("",begin));
+        else {
+            String[] begin = new String[max+2];
+            Arrays.fill(begin,"*");
+            int start=(max-2)/2;
+            begin[start]="C";
+            begin[start+1]="A";
+            begin[start+2]="R";
+            begin[start+3]="T";
+            System.out.println(String.join("",begin));
+            System.out.println("Ordered Items:");
+            int count=0;
+            for (Media media: itemsOrdered){
+                totalcost+=media.cost;
+                System.out.println((count+1)+"."+media.toString());
+                count++;
+            }
+            System.out.println("Total cost: "+totalcost+"$");
+            Arrays.fill(begin,"*");
+            System.out.println(String.join("",begin));
+        }
     }
     public void clearCart(){
         itemsOrdered.clear();
