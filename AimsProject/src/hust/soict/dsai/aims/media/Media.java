@@ -11,10 +11,14 @@ public class Media {
     public String category;
     public float cost;
 
-    protected String getTitle() {
+    public String getTitle() {
         return title;
     }
     public boolean equals(Media media){
         return media.getTitle().equals(title);
+    }
+
+    public float getCost() {
+        return cost;
     }
 }
