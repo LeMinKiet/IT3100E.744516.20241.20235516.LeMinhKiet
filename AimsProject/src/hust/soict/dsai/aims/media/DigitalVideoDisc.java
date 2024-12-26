@@ -1,53 +1,44 @@
 package hust.soict.dsai.aims.media;
 
-public class DigitalVideoDisc extends Disc implements Playable {
-    private int length;
-    private String director;
-    private static int nbDigitalVideoDiscs=0;
-    public DigitalVideoDisc(String title,int length, String director) {
-        super(director,length);
-        this.title = title;
-        nbDigitalVideoDiscs++;
-        id=nbDigitalVideoDiscs;
-    }
-    public DigitalVideoDisc(String title, String category, float cost,int length,String director) {
-        super(director,length);
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
-        nbDigitalVideoDiscs++;
-        id=nbDigitalVideoDiscs;
-    }
-    public DigitalVideoDisc(String title, String category, String director, float cost, int length) {
-        super(director,length);
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.cost = cost;
-        nbDigitalVideoDiscs++;
-        id=nbDigitalVideoDiscs;
-    }
-    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super(director,length);
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.length = length;
-        this.cost = cost;
-        nbDigitalVideoDiscs++;
-        id=nbDigitalVideoDiscs;
-    }
-    public String toString(){
-        return "DVD - "+this.title+" - "+this.category+" - "+this.director+" - "+this.length+" - "+this.cost+ "$";
-    }
-    public boolean isMatch(String name){
-        return name.equals(this.title);
+import hust.soict.dsai.aims.exception.PlayerException;
+
+import javax.swing.*;
+
+public class DigitalVideoDisc extends Disc implements Playable{
+
+    public DigitalVideoDisc(String director, int length) {
+        super(director, length);
     }
 
-    @Override
-    public void play() {
-        System.out.println("Playing DVD: " + this.getTitle());
-        System.out.println("DVD length: " + this.getLength());
+    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+        super(title, category, director, length, cost);
+    }
+
+    public DigitalVideoDisc(String title, String category, float cost) {
+        super(title, category, cost);
+    }
+
+    public DigitalVideoDisc(String title) {
+        super(title);
+    }
+
+    public DigitalVideoDisc() {
+        super();
+    }
+
+
+    public void play() throws PlayerException {
+        // TODO Auto-generated method stub
+        if (this.getLength() > 0) {
+            JDialog dialog = new JDialog();
+            dialog.setSize(300, 200);
+
+            // create Label
+            JLabel text = new JLabel("DVD - Title : " + this.getTitle() + " Length : " + this.getLength());
+            dialog.add(text);
+            dialog.setTitle("Play DVD");
+            dialog.setVisible(true);
+        } else
+            throw new PlayerException("ERROR : DVD length is non-positive");
     }
 }
-

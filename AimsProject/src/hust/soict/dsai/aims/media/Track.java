@@ -1,9 +1,14 @@
 package hust.soict.dsai.aims.media;
 
-public class Track implements Playable {
+import hust.soict.dsai.aims.exception.PlayerException;
+
+import javax.swing.*;
+
+public class Track implements Playable{
     private String title;
     private int length;
 
+    // Getter methods
     public String getTitle() {
         return title;
     }
@@ -12,17 +17,34 @@ public class Track implements Playable {
         return length;
     }
 
+    // Constructors
     public Track(String title, int length) {
         this.title = title;
-        this.length=length;
+        this.length = length;
     }
 
     @Override
-    public void play() {
-        System.out.println("Playing Track: " + this.getTitle());
-        System.out.println("Track length: " + this.getLength());
+    public void play() throws PlayerException {
+        // TODO Auto-generated method stub
+        if (this.getLength() > 0) {
+            JDialog dialog = new JDialog();
+            dialog.setSize(300, 200);
+
+            // create Label
+            JLabel text = new JLabel("Track - Title : " + this.getTitle() + " Length : " + this.getLength());
+            dialog.add(text);
+            dialog.setTitle("Play Track");
+            dialog.setVisible(true);
+        } else
+            throw new PlayerException("ERROR : Track length is non-positive");
     }
-    public boolean equals(Track track){
-        return (track.length==length) && (track.title.equals(title));
+
+    @Override
+    public boolean equals(Object o) {
+        Track tmp = (Track)o;
+        if(this.getTitle() == tmp.getTitle() && this.getLength() == tmp.getLength()) {
+            return true;
+        }
+        else return false;
     }
 }
